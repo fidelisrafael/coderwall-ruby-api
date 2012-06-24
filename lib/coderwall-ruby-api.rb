@@ -1,3 +1,4 @@
+require "coderwall-ruby-api/version"
 require 'net/http'
 require 'json'
 
