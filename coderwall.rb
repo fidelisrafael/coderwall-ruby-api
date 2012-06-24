@@ -11,11 +11,11 @@ module Coderwall
 		def [](key)
 			return @user_data[key.to_s]
 		end
+		private
 		def method_missing(*args)
 		 make_http_request
 		 return @user_data[args[0].to_s] || super		
 		end
-		private
 		def make_http_request
 			@user_data ||= JSON.parse(Net::HTTP.get(URI(BASE_URI % @username))) rescue invalid_username
 		end
