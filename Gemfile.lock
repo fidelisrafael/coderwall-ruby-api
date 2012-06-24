@@ -1,0 +1,14 @@
+PATH
+  remote: .
+  specs:
+    coderwall-ruby-api (0.0.1)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  coderwall-ruby-api!

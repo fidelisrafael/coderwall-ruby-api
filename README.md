@@ -2,10 +2,15 @@ Coderwall Ruby API
 ==================
 
 A simple Ruby API for access [Coderwall](http://coderwall.com) user's data.
-It's not a gem, is just a single file script.
 
 Usage
 =====
+First, install the gem :
+	
+	gem install coderwall-ruby-api
+
+Then, play :
+
 	require 'coderwall'
 
 	user = Coderwall::User.new('fidelisrafael') # Load user data
@@ -38,7 +43,8 @@ When you create a Coderwall::User instance, automatically the data is fetched fr
 
 License
 =======
-The project is licensed under the MIT license. See license file for details. 	
+The project is licensed under the MIT license. See LICENSE file for details. 	
+
 Contribute
 ==========
 Please feel free to either fork me or post issues.
