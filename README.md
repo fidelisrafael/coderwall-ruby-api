@@ -38,7 +38,7 @@ When you create a Coderwall::User instance, automatically the data is fetched fr
 
 License
 =======
-The project is licensed under the MIT license. See License.txt for details. 	
+The project is licensed under the MIT license. See license file for details. 	
 Contribute
 ==========
 Please feel free to either fork me or post issues.
