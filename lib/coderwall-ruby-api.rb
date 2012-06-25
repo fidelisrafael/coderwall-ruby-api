@@ -6,14 +6,6 @@ module Coderwall
 	VERSION = "0.0.2"
 	BASE_URI = "http://coderwall.com/%s.json"
 	
-	class Hash < ::Hash
-		def initialize(hash)
-			hash.collect { |k,v| self[k.to_s.to_sym]=v }
-		end
-		def method_missing(*args)
-			return self[args[0].to_s.to_sym] || super
-		end
-	end	
 	class User
 		def initialize(username, send_request=true)
 			username.empty? ? invalid_username : @username = username.to_s
