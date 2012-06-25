@@ -3,7 +3,6 @@ require 'json'
 
 module Coderwall
 	
-	VERSION = "0.0.2"
 	BASE_URI = "http://coderwall.com/%s.json"
 	
 	class User
