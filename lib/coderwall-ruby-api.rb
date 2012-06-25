@@ -1,9 +1,19 @@
-require "coderwall-ruby-api/version"
 require 'net/http'
 require 'json'
 
 module Coderwall
+	
+	VERSION = "0.0.2"
 	BASE_URI = "http://coderwall.com/%s.json"
+	
+	class Hash < ::Hash
+		def initialize(hash)
+			hash.collect { |k,v| self[k.to_s.to_sym]=v }
+		end
+		def method_missing(*args)
+			return self[args[0].to_s.to_sym] || super
+		end
+	end	
 	class User
 		def initialize(username, send_request=true)
 			username.empty? ? invalid_username : @username = username.to_s
@@ -18,7 +28,11 @@ module Coderwall
 		 return @user_data[args[0].to_s] || super		
 		end
 		def make_http_request
-			@user_data ||= JSON.parse(Net::HTTP.get(URI(BASE_URI % @username))) rescue invalid_username
+			begin
+			@user_data ||= JSON.parse(Net::HTTP.get(URI(BASE_URI % @username))) 
+			rescue JSON::ParserError => e
+				invalid_username
+			end
 		end
 		def invalid_username
 			raise(ArgumentError.new('invalid username'))

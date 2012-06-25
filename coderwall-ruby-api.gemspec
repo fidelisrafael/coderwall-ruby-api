@@ -3,7 +3,7 @@ require File.expand_path('../lib/coderwall-ruby-api/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Rafael Fidelis"]
-  gem.email         = ["rafa_fidelis@yahoo.com.br"]
+w  gem.email         = ["rafa_fidelis@yahoo.com.br"]
   gem.description   = %q{Simple Coderwall API Interface for Ruby}
   gem.summary       = gem.description
   gem.homepage      = "https://github.com/fidelisrafael/coderwall-ruby-api"
