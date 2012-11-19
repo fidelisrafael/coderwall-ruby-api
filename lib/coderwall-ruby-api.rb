@@ -4,7 +4,7 @@ require 'json'
 
 module Coderwall
 	
-	BASE_URI = "http://coderwall.com/%s.json"
+	BASE_URI = "https://coderwall.com/%s.json"
 	
 	class User
 		def initialize(username, send_request=true)
@@ -21,11 +21,19 @@ module Coderwall
 		end
 		def make_http_request
 			begin
-			@user_data ||= JSON.parse(Net::HTTP.get(URI(BASE_URI % @username))) 
+			@user_data ||= JSON.parse(send_http_request) 
 			rescue JSON::ParserError => e
 				invalid_username
 			end
 		end
+		def send_http_request
+			uri = URI.parse(BASE_URI % @username)
+			response = Net::HTTP.start(uri.host, use_ssl: true, verify_mode: OpenSSL::SSL::VERIFY_NONE) do |http|
+			  http.get uri.request_uri
+			end
+			return response.body
+		end
+
 		def invalid_username
 			raise(ArgumentError.new('invalid username'))
 		end
