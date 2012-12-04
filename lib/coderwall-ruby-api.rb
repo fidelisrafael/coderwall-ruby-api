@@ -1,5 +1,5 @@
 require 'version'
-require 'net/http'
+require 'net/https'
 require 'json'
 
 module Coderwall
@@ -28,10 +28,13 @@ module Coderwall
 		end
 		def send_http_request
 			uri = URI.parse(BASE_URI % @username)
-			response = Net::HTTP.start(uri.host, use_ssl: true, verify_mode: OpenSSL::SSL::VERIFY_NONE) do |http|
-			  http.get uri.request_uri
+			https = Net::HTTP.new(uri.host, 443)
+			https.use_ssl = true
+			https.verify_mode = OpenSSL::SSL::VERIFY_NONE
+			https.start do
+				response = https.get uri.request_uri
+				return response.body
 			end
-			return response.body
 		end
 
 		def invalid_username
