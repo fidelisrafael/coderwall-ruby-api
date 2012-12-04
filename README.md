@@ -41,6 +41,13 @@ When you create a Coderwall::User instance, automatically the data is fetched fr
 	user_badges = Coderwall::User.achievements('fidelisrafael')
 	user_github_account = Coderwall::User.accounts('fidelisrafael')['github']
 
+
+Contributors
+=========
+
+* Kenichi Kamiya - https://github.com/kachick
+* Syntactic Vexation - https://github.com/syntacticvexation
+
 License
 =======
 The project is licensed under the MIT license. See LICENSE file for details. 	
